@@ -1,6 +1,6 @@
 class Carts::ItemsController < ApplicationController
   def create
-    @item = Cart::Item.new(item_params)
+    @item = CartItem.new(item_params)
 
     if @item.save
       render_cart
@@ -10,7 +10,7 @@ class Carts::ItemsController < ApplicationController
   end
 
   def update
-    @item = Cart::Item.find(params[:id])
+    @item = CartItem.find(params[:id])
 
     if item_params[:quantity].to_i.zero?
       @item.destroy
@@ -27,7 +27,7 @@ class Carts::ItemsController < ApplicationController
 
   private
   def render_cart
-    render(json: { items: Cart::Item.all, discounts: [] })
+    render(json: Cart.new)
   end
 
   def item_params

@@ -1,5 +1,9 @@
-module Cart
-  def self.table_name_prefix
-    'cart_'
+class Cart
+  include ActiveModel::Serialization
+  attr_accessor :items, :discounts
+
+  def initialize(items = CartItem.all, discounts = [])
+    @items = items
+    @discounts = discounts
   end
 end

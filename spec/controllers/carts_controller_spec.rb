@@ -3,8 +3,8 @@ require 'rails_helper'
 RSpec.describe CartsController, type: :controller do
   describe 'GET #show' do
     before do
-      Cart::Item.create!(product_id: 1)
-      Cart::Item.create!(product_id: 2)
+      CartItem.create!(product_id: 1)
+      CartItem.create!(product_id: 2)
     end
 
     it 'renders cart with items and discounts' do

@@ -1,5 +1,5 @@
 class CartsController < ApplicationController
   def show
-    render(json: { items: Cart::Item.all, discounts: [] })
+    render(json: Cart.new)
   end
 end
