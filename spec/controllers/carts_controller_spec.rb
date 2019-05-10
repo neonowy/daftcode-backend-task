@@ -5,6 +5,7 @@ RSpec.describe CartsController, type: :controller do
     before do
       CartItem.create!(product_id: 1)
       CartItem.create!(product_id: 2)
+      CartDiscount.create!(kind: :set, name: 'BBQ pack', price: 19.99)
     end
 
     it 'renders cart with items and discounts' do
@@ -12,7 +13,7 @@ RSpec.describe CartsController, type: :controller do
 
       cart = JSON.parse(response.body)
       expect(cart['items'].size).to eq(2)
-      expect(cart['discounts'].size).to eq(0)
+      expect(cart['discounts'].size).to eq(1)
     end
   end
 end
